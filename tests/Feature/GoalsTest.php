@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Http\Controllers\UserController;
 use App\Models\Goals;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
