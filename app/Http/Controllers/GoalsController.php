@@ -50,7 +50,7 @@ class GoalsController extends Controller
     }
 
     /**
-     *  update a new goal
+     *  Update a goal
      */
     public function update(Request $request, int $id)
     {
