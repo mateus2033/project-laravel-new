@@ -20,6 +20,8 @@ Route::prefix('/goals')->group(function () {
 
     Route::middleware('auth:sanctum')->post('/store', [GoalsController::class, 'store']);
 
+    Route::middleware('auth:sanctum')->put('/update/{id}', [GoalsController::class, 'update']);
+
 });
 
 Route::prefix('/login')->group(function () {

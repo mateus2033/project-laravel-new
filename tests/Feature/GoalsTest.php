@@ -60,4 +60,26 @@ class GoalsTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonCount(4);
     }
+
+    public function test_update_new_goal()
+    {
+        $user = User::factory()->definition();
+
+        $user = User::factory()->create([
+            "name" => $user["name"],
+            "email" => $user["email"],
+            "password" => Hash::make($user["password"])
+        ]);
+
+        $goal = Goals::factory()->create([
+            "user_id" => $user->id
+        ]);
+
+        $response = $this->withHeaders([
+            'Authorization' => UserController::generateToken($user)
+        ])
+            ->put("/api/goals/update", Goals::factory()->definition());
+
+        $response->assertStatus(204);
+    }
 }

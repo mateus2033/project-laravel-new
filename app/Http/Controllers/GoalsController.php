@@ -48,4 +48,25 @@ class GoalsController extends Controller
 
         return response()->json($goal, 201);
     }
+
+    /**
+     *  update a new goal
+     */
+    public function update(Request $request, int $id)
+    {
+        $goal = Goals::find($id);
+
+        if($goal->isEmpty()) {
+            abort(404);
+        }
+
+        $goal->update([
+            "title" => $request->title,
+            "value" => $request->value,
+            "value_obtained" => $request->value_obtained,
+            "deadline" => $request->deadline
+        ]);
+
+        return response()->noContent();
+    }
 }
